@@ -1,12 +1,20 @@
-let inputEl = document.querySelector('#name-input');
+const inputEl = document.querySelector('#name-input');
+const outputEl = document.querySelector('#name-output');
+const letters = [];
 
-inputEl.addEventListener('input', onInputChange);
+inputEl.addEventListener('input', onChangeName);
 
-let outputEl = document.querySelector('#name-output');
 
-function onInputChange(event) {
-  inputEl = event.currentTarget.value;
-  console.log(inputEl);
-
-  inputEl !== ' ' ? (outputEl.innerText = inputEl.trim()) : 'незнакомец';
-}
+function onChangeName(event) {
+    if (event.data === null) {
+        letters.pop();
+        outputEl.textContent = letters.join('');
+    }    
+    else 
+        letters.push(event.data)
+        outputEl.textContent = letters.join('');
+        
+        if (letters.length === 0) {
+            outputEl.textContent = 'незнакомец';
+        }    
+};

@@ -1,9 +1,11 @@
-const textEl = document.getElementById("text");
+const inputEl = document.querySelector('#font-size-control');
+const textEl = document.querySelector('#text');
+textEl.style.fontSize = '16px';
 
-const inputEl = document.getElementById("font-size-control");
+inputEl.addEventListener('input', onChangeSize);
 
-inputEl.addEventListener("input", () => {
-  const size = inputEl.value;
-
-  textEl.style.fontSize = size + "px";
-});
+function onChangeSize(even) {
+    let factor = even.target.valueAsNumber * 0.32;
+    
+    textEl.style.fontSize = `${factor}px`;
+};
